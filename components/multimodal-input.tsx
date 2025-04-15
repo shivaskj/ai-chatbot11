@@ -16,7 +16,7 @@ import {
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
-import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons';
+import { ArrowUpIcon, PaperclipIcon, StopIcon, GlobeIcon, MicrophoneIcon } from './icons';
 import { PreviewAttachment } from './preview-attachment';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
@@ -222,7 +222,7 @@ function PureMultimodalInput({
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder="Send a message test3..."
         value={input}
         onChange={handleInput}
         className={cx(
@@ -250,9 +250,18 @@ function PureMultimodalInput({
 
       <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
+        <Button variant="ghost" size="sm" className="rounded-2xl bg-inherit">
+                 < GlobeIcon/> save {/* <Save className="h-4 w-4" /> */}
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    reason{/* <Save className="h-4 w-4" /> */}
+                  </Button>
       </div>
 
       <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
+      <Button variant="ghost" size="sm">
+                 < MicrophoneIcon/> {/* <Save className="h-4 w-4" /> */}
+                  </Button>
         {status === 'submitted' ? (
           <StopButton stop={stop} setMessages={setMessages} />
         ) : (

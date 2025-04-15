@@ -5,30 +5,38 @@ import { ThemeProvider } from '@/components/theme-provider';
 
 import './globals.css';
 
+// 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chat.vercel.ai'),
   title: 'Next.js Chatbot Template',
   description: 'Next.js chatbot template using the AI SDK.',
 };
 
+// This is a workaround for Safari on iOS to disable auto-zoom when focusing on inputs
 export const viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari
 };
 
+// Font imports
+// https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#font-optimization
 const geist = Geist({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-geist',
 });
 
+// This font is used in the code blocks and the terminal
 const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-geist-mono',
 });
 
+// This is the color used for the theme color meta tag in the head of the document
 const LIGHT_THEME_COLOR = 'hsl(0 0% 100%)';
 const DARK_THEME_COLOR = 'hsl(240deg 10% 3.92%)';
+
+// This script updates the theme color meta tag based on the current theme
 const THEME_COLOR_SCRIPT = `\
 (function() {
   var html = document.documentElement;
@@ -47,6 +55,7 @@ const THEME_COLOR_SCRIPT = `\
   updateThemeColor();
 })();`;
 
+// This is the root layout component for the app
 export default async function RootLayout({
   children,
 }: Readonly<{
