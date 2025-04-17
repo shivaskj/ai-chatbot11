@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 // import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import InsightsDashboard from "@/components/insights"
 
 export default function PromptTestingInterface() {
   const [messages, setMessages] = useState([
@@ -34,7 +35,7 @@ export default function PromptTestingInterface() {
             </Button>
           </div>
         </div>
-
+           <InsightsDashboard />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1 mb-3">
           {/* Model A */}
           <div className="bg-white rounded-lg shadow flex flex-col">

@@ -24,6 +24,9 @@ import { SuggestedActions } from './suggested-actions';
 import equal from 'fast-deep-equal';
 import type { UseChatHelpers } from '@ai-sdk/react';
 
+// Define the Mode type
+type Mode = "standard" | "reasoning";
+
 function PureMultimodalInput({
   chatId,
   input,
@@ -53,6 +56,8 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
+
+  const [chatMode, setChatMode] = useState<'standard' | 'reasoning'>("standard"); // Initialize with "standard"
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -250,12 +255,17 @@ function PureMultimodalInput({
 
       <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
-        <Button variant="ghost" size="sm" className="rounded-2xl bg-inherit">
-                 < GlobeIcon/> save {/* <Save className="h-4 w-4" /> */}
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    reason{/* <Save className="h-4 w-4" /> */}
-                  </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          className={chatMode === "standard" ? "bg-green-900 text-white" : "bg-red-950 text-white"} // Change color based on mode
+          onClick={(event) => {
+            event.preventDefault(); // Prevent default behavior
+            setChatMode((prev) => (prev === "standard" ? "reasoning" : "standard")); // Toggle mode
+          }}
+        >
+          {chatMode} {/* Display the current mode */}
+        </Button>
       </div>
 
       <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
