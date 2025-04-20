@@ -30,7 +30,7 @@ export default function InsightsDashboard() {
             <div className="flex flex-row items-center justify-around gap-2 flex-grow">
               <div className="flex flex-col items-center">
                 <div className="relative w-20 h-20">
-                  <CircleProgress percentage={20} color="#1e3a8a" radius={45} />
+                  <CircleProgress percentage={20} color="#1e3a8a"  />
                 </div>
                 <p className="text-center text-xs text-gray-700 mt-1 max-w-[150px]">
                   Have taken little actions to reduce time taken from insight generation to business action
